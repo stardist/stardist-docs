@@ -96,13 +96,13 @@ html_theme = 'sphinx_rtd_theme'
 # documentation.
 #
 html_theme_options = dict(
-    canonical_url = 'http://stardist.net/',
+    canonical_url = 'https://stardist.net/',
     logo_only = False,
     # display_version = True,
 )
 
 # to create CNAME file
-html_baseurl = 'http://stardist.net/'
+html_baseurl = 'https://stardist.net/'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
