@@ -32,7 +32,7 @@ Please cite the paper(s) if you are using this code in your research.
   doi       = {10.1007/978-3-030-00934-2_30}
 }
 
-@inproceedings{weigert2019,
+@inproceedings{weigert2020,
   author    = {Martin Weigert and Uwe Schmidt and Robert Haase and Ko Sugawara and Gene Myers},
   title     = {Star-convex Polyhedra for 3D Object Detection and Segmentation in Microscopy},
   booktitle = {The IEEE Winter Conference on Applications of Computer Vision (WACV)},
