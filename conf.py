@@ -119,7 +119,7 @@ html_last_updated_fmt = '%b %d, %Y'
 # typographically correct entities.
 # smartquotes = True
 
-html_logo = '_static/images/logo.png'
+html_logo = '_static/images/logo_transp.png'
 
 html_show_sourcelink = False
 
