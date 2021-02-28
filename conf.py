@@ -98,6 +98,7 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = dict(
     canonical_url = 'https://stardist.net/',
     logo_only = False,
+    collapse_navigation = False,
     # display_version = True,
 )
 
@@ -110,6 +111,10 @@ html_baseurl = 'https://stardist.net/'
 html_static_path = ['_static']
 
 html_css_files = ['css/custom.css']
+
+# https://github.com/readthedocs/sphinx_rtd_theme/issues/455#issuecomment-741734047
+html_js_files = ['js/custom.js']
+
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

@@ -1,5 +1,5 @@
 
-# FAQ to StarDist - Object Detection with Star-Convex Polygons
+# FAQs for StarDist - Object Detection with Star-Convex Polygons
 
 ![](https://github.com/mpicbg-csbd/stardist/raw/master/images/stardist_overview.png)
 
