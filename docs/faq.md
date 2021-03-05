@@ -117,6 +117,16 @@ A StarDist model is always trained to work for images with specific input channe
 
 If images have additional channels or channels in a different order than expected by a trained StarDist model, you first need to re-arrange them. For example, you may need to split the image channels and select the appropriate channel image (e.g. DAPI) before you can apply our  pretrained model for fluorescent nuclei in Fiji. You can then use the resulting segmentation to perform measurements in the other channels.
 
+#### What if my training dataset does not fit into (CPU) memory?
+
+If you cannot load your full training data into CPU memory (e.g. when using many large annotated 3D volumes), you can do the following:
+
+* Use [keras Sequences](https://www.tensorflow.org/api_docs/python/tf/keras/utils/Sequence) to lazily load your images and masks
+* Disable sample caching in the config `config = Config3D(..., train_sample_cache = False)`
+* Use `model.train(X,Y,...)` with `X` and `Y` now being keras Sequence objects
+
+This should lead to an almost constant memory footprint during training.
+
 
 ## Labeling/annotation
 
