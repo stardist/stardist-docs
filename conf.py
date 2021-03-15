@@ -18,9 +18,10 @@
 
 
 # -- Project information -----------------------------------------------------
+import datetime
 
 project = 'StarDist'
-copyright = '2020, StarDist docs authors.'
+copyright = f'2020–{datetime.datetime.now().year}, StarDist docs authors.'
 author = 'StarDist docs authors'
 
 # The short X.Y version
