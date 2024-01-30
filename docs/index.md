@@ -34,4 +34,12 @@ If you are using StarDist in your research please cite the relevant paper(s):
   year      = {2020},
   doi       = {10.1109/WACV45572.2020.9093435}
 }
+
+@inproceedings{weigert2022,
+  author    = {Martin Weigert and Uwe Schmidt},
+  title     = {Nuclei Instance Segmentation and Classification in Histopathology Images with Stardist},
+  booktitle = {The IEEE International Symposium on Biomedical Imaging Challenges (ISBIC)},
+  year      = {2022},
+  doi       = {10.1109/ISBIC56247.2022.9854534}
+}
 ```
