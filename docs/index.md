@@ -1,14 +1,19 @@
+---
+hide:
+  - navigation
+  - toc
+---
 
-# FAQs for StarDist - Object Detection with Star-Convex Polygons
+# StarDist - Object Detection with Star-Convex Polygons
 
-![](https://github.com/stardist/stardist/raw/master/images/stardist_overview.png)
+![](assets/overview.png)
 
-This page provides answers to frequently asked questions (FAQ) when using StarDist.
+This web site provides answers to [frequently asked questions (FAQ)](faq.md) when using StarDist.
 
 Please visit the [main stardist project page](https://github.com/stardist/stardist/) for general documentation, installation instructions, and issue reports. 
 
 
-If you are using StarDist in your research please cite the paper(s) 
+If you are using StarDist in your research please cite the relevant paper(s):
 
 ```bibtex
 @inproceedings{schmidt2018,
@@ -29,11 +34,4 @@ If you are using StarDist in your research please cite the paper(s)
   year      = {2020},
   doi       = {10.1109/WACV45572.2020.9093435}
 }
-```
-
-``` toctree::
-    :maxdepth: 2
-    :hidden:
-    
-    docs/faq
 ```

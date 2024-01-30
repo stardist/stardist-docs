@@ -1,0 +1,87 @@
+site_name: StarDist
+site_url: https://stardist.net/
+
+site_author: StarDist docs authors
+copyright: Copyright &copy; 2020 &ndash; 2024 StarDist docs authors.
+site_description: StarDist is a deep learning based nuclei/cell detection and segmentation method for 2D and 3D microscopy images that is suited for densely packed objects that can be well approximated by star-convex polygons/polyhedra.
+
+repo_url: https://github.com/stardist/stardist
+repo_name: stardist/stardist
+edit_uri: https://github.com/stardist/stardist-docs/blob/main/docs/
+
+nav:
+  - Overview: index.md
+  - FAQ: faq.md
+  # - 'Forum': 'https://forum.image.sc/tag/stardist'
+
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        'docs/faq.html': 'faq.md'
+  - git-revision-date-localized:
+      enable_creation_date: false
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/logo.png
+  font: false
+  # favicon: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - toc.follow
+    - toc.integrate
+    - search.highlight
+    - navigation.tabs
+    # - navigation.footer
+    # - navigation.top
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tracking
+    - content.action.edit
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: "teal"
+      accent: "teal"
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: "teal"
+      accent: "teal"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra:
+  analytics:
+    provider: plausible
+    domain: stardist.net
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/stardist
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/stardist/
+
+markdown_extensions:
+  - toc:
+      # toc_depth: 3
+      # permalink: "&starf;"
+      # permalink: ⚓︎
+      permalink: "#"
+      # note: always must use "python -m mkdocs" instead of "mkdocs" from the command line
+      # cf. https://github.com/mkdocs/mkdocs/issues/1442
+      slugify: !!python/name:local.slugify
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
