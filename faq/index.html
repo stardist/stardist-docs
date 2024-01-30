@@ -1,0 +1,1212 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="StarDist is a deep learning based nuclei/cell detection and segmentation method for 2D and 3D microscopy images that is suited for densely packed objects that can be well approximated by star-convex polygons/polyhedra.">
+      
+      
+        <meta name="author" content="StarDist docs authors">
+      
+      
+        <link rel="canonical" href="https://stardist.net/faq/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>FAQ - StarDist</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script defer data-domain="stardist.net" src="https://plausible.io/js/plausible.outbound-links.js"></script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frequently-asked-questions-faq" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="StarDist" class="md-header__button md-logo" aria-label="StarDist" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            StarDist
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/stardist/stardist" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stardist/stardist
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="StarDist" class="md-nav__button md-logo" aria-label="StarDist" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    StarDist
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/stardist/stardist" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stardist/stardist
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#will-it-work-for-my-data-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Will it work for my data/application?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Will it work for my data/application?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-know-if-my-objects-of-interest-are-sufficiently-star-convex-i-e-is-stardist-a-good-choice-for-my-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I know if my objects of interest are (sufficiently) star-convex, i.e. is StarDist a good choice for my data?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-stains-markers-with-different-appearance-quality-or-inhomogeneity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other stains/markers with different appearance, quality, or inhomogeneity?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-other-objects-besides-round-nuclei-be-segmented-e-g-multi-lobe-nuclei-granules-bacteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can other objects besides round nuclei be segmented (e.g. multi-lobe nuclei, granules, bacteria)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-multiple-nucleus-types-is-it-possible-to-only-segment-some-or-classify-in-addition-to-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      With multiple nucleus types, is it possible to only segment some or classify in addition to segmentation?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-for-cell-counting-or-centroid-localization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use for cell counting or centroid localization?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-format-pre-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data format/pre-processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data format/pre-processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-pre-process-my-images-e-g-background-subtraction-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do I need to pre-process my images (e.g. background subtraction, filtering)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-it-advantageous-to-preprocess-3d-stacks-to-adjust-the-axial-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is it advantageous to preprocess 3D stacks to adjust the axial resolution?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-a-specific-image-format-size-or-normalization-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is a specific image format, size, or normalization required?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-multi-channel-images-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are multi-channel images supported?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-my-training-dataset-does-not-fit-into-cpu-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if my training dataset does not fit into (CPU) memory?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labeling-annotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labeling/annotation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Labeling/annotation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to label
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to label">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#should-i-annotate-a-few-entire-raw-images-stacks-or-is-it-better-to-annotate-several-smaller-image-crops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Should I annotate a few entire raw images/stacks, or is it better to annotate several smaller image crops?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-size-should-the-training-images-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which size should the training images be?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-there-an-upper-size-limit-for-objects-to-be-well-segmented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is there an upper size limit for objects to be well segmented?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-have-to-annotate-all-nuclei-objects-in-a-training-image-what-about-those-that-are-only-partially-visible-what-about-other-objects-not-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do I have to annotate all nuclei (objects) in a training image? What about those that are only partially visible? What about other objects not of interest?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-it-better-to-annotate-images-from-scratch-or-to-bootstrap-curate-imperfect-annotations-e-g-from-another-method-is-training-sensitive-to-annotation-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is it better to annotate images from scratch or to bootstrap/curate imperfect annotations (e.g. from another method)? Is training sensitive to annotation mistakes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-images-or-nucleus-object-instances-do-i-have-to-annotate-for-good-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      How many images or nucleus (object) instances do I have to annotate for good results?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-format-for-labeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software/format for labeling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software/format for labeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-which-format-do-i-need-to-save-my-image-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      In which format do I need to save my image annotations?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-software-do-you-recommend-to-annotate-2d-and-3d-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which software do you recommend to annotate 2D and 3D images?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-ve-annotated-my-images-in-software-x-how-do-i-export-the-annotations-as-label-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      I've annotated my images in software X, how do I export the annotations as label images?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-pretrained-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pretrained models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using pretrained models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-know-if-a-pretrained-or-any-model-is-suitable-good-enough-for-my-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I know if a pretrained (or any) model is suitable/good enough for my data?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-rescale-my-images-how-do-i-know-which-pixel-resolution-is-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do I need to rescale my images? How do I know which pixel resolution is required?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-there-a-pretrained-model-for-3d-or-do-you-plan-to-release-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is there a pretrained model for 3D, or do you plan to release one?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-you-have-plans-to-release-other-pretrained-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do you have plans to release other pretrained models?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed-hardware-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed/Hardware/GPU
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speed/Hardware/GPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-speed-up-the-prediction-is-it-possible-to-predict-on-very-large-images-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I speed up the prediction? Is it possible to predict on very large images/stacks?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-hardware-do-you-recommend" class="md-nav__link">
+    <span class="md-ellipsis">
+      What hardware do you recommend?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-technical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method/technical
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method/technical">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the probability and overlap/NMS thresholds? How do I select good values?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-it-work-under-the-hood-i-want-to-know-technical-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does it work under the hood? I want to know technical details.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-a-trained-model-sensitive-to-changes-in-image-intensity-or-object-size-as-compared-to-the-training-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is a trained model sensitive to changes in image intensity or object size (as compared to the training images)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-you-support-or-recommend-transfer-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do you support or recommend "transfer learning"?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postprocessing-quantification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Postprocessing/quantification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Postprocessing/quantification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-it-possible-to-refine-the-shape-of-the-predicted-objects-e-g-for-not-fully-star-convex-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is it possible to "refine" the shape of the predicted objects (e.g. for not fully star-convex objects)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I evaluate the quality of the predicted results of a model?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I perform measurements of the predicted objects in software X?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-import-the-predicted-results-into-software-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I import the predicted results into software X?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fiji-imagej" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fiji/ImageJ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fiji/ImageJ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      After training in Python, how do I export a model to be used in Fiji? Do I have to be careful with the version of TensorFlow?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-it-be-used-in-deepimagej" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can it be used in DeepImageJ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fiji-plugin-currently-only-supports-2d-images-is-3d-support-planned" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Fiji plugin currently only supports 2D images. Is 3D support planned?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-there-differences-between-the-python-and-fiji-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are there differences between the Python and Fiji versions?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/stardist/stardist-docs/blob/main/docs/faq.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permanent link">#</a></h1>
+<!--
+* [Data](#data)
+    * [Will it work for my data/application?](#will-it-work-for-my-data-application)
+        * [How do I know if my objects of interest are (sufficiently) star-convex, i.e. is StarDist a good choice for my data?](#how-do-i-know-if-my-objects-of-interest-are-sufficiently-star-convex-i-e-is-stardist-a-good-choice-for-my-data)
+        * [Other stains/markers with different appearance, quality, or inhomogeneity?](#other-stains-markers-with-different-appearance-quality-or-inhomogeneity)
+        * [Can other objects besides round nuclei be segmented (e.g. multi-lobe nuclei, granules, bacteria)?](#can-other-objects-besides-round-nuclei-be-segmented-e-g-multi-lobe-nuclei-granules-bacteria)
+        * [With multiple nucleus types, is it possible to only segment some or classify in addition to segmentation?](#with-multiple-nucleus-types-is-it-possible-to-only-segment-some-or-classify-in-addition-to-segmentation)
+        * [Use for cell counting or centroid localization?](#use-for-cell-counting-or-centroid-localization)
+    * [Data format/pre-processing](#data-format-pre-processing)
+        * [Do I need to pre-process my images (e.g. background subtraction, filtering)?](#do-i-need-to-pre-process-my-images-e-g-background-subtraction-filtering)
+        * [Is it advantageous to preprocess 3D stacks to adjust the axial resolution?](#is-it-advantageous-to-preprocess-3d-stacks-to-adjust-the-axial-resolution)
+        * [Is a specific image format, size, or normalization required?](#is-a-specific-image-format-size-or-normalization-required)
+        * [Are multi-channel images supported?](#are-multi-channel-images-supported)
+* [Labeling/annotation](#labeling-annotation)
+    * [How to label](#how-to-label)
+        * [Should I annotate a few entire raw images/stacks, or is it better to annotate several smaller image crops?](#should-i-annotate-a-few-entire-raw-images-stacks-or-is-it-better-to-annotate-several-smaller-image-crops)
+        * [Which size should the training images be?](#which-size-should-the-training-images-be)
+        * [Is there an upper size limit for objects to be well segmented?](#is-there-an-upper-size-limit-for-objects-to-be-well-segmented)
+        * [Do I have to annotate all nuclei (objects) in a training image? What about those that are only partially visible? What about other objects not of interest?](#do-i-have-to-annotate-all-nuclei-objects-in-a-training-image-what-about-those-that-are-only-partially-visible-what-about-other-objects-not-of-interest)
+        * [Is it better to annotate images from scratch or to bootstrap/curate imperfect annotations (e.g. from another method)? Is training sensitive to annotation mistakes?](#is-it-better-to-annotate-images-from-scratch-or-to-bootstrap-curate-imperfect-annotations-e-g-from-another-method-is-training-sensitive-to-annotation-mistakes)
+        * [How many images or nucleus (object) instances do I have to annotate for good results?](#how-many-images-or-nucleus-object-instances-do-i-have-to-annotate-for-good-results)
+    * [Software/format for labeling](#software-format-for-labeling)
+        * [In which format do I need to save my image annotations?](#in-which-format-do-i-need-to-save-my-image-annotations)
+        * [Which software do you recommend to annotate 2D and 3D images?](#which-software-do-you-recommend-to-annotate-2d-and-3d-images)
+        * [I've annotated my images in software X, how do I export the annotations as label images?](#i-ve-annotated-my-images-in-software-x-how-do-i-export-the-annotations-as-label-images)
+* [Using pretrained models](#using-pretrained-models)
+    * [How do I know if a pretrained (or any) model is suitable/good enough for my data?](#how-do-i-know-if-a-pretrained-or-any-model-is-suitable-good-enough-for-my-data)
+    * [Do I need to rescale my images? How do I know which pixel resolution is required?](#do-i-need-to-rescale-my-images-how-do-i-know-which-pixel-resolution-is-required)
+    * [Is there a pretrained model for 3D, or do you plan to release one?](#is-there-a-pretrained-model-for-3d-or-do-you-plan-to-release-one)
+    * [Do you have plans to release other pretrained models?](#do-you-have-plans-to-release-other-pretrained-models)
+* [Speed/Hardware/GPU](#speed-hardware-gpu)
+    * [How can I speed up the prediction? Is it possible to predict on very large images/stacks?](#how-can-i-speed-up-the-prediction-is-it-possible-to-predict-on-very-large-images-stacks)
+    * [What hardware do you recommend?](#what-hardware-do-you-recommend)
+* [Method/technical](#method-technical)
+    * [What are the probability and overlap/NMS thresholds? How do I select good values?](#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values)
+    * [How does it work under the hood? I want to know technical details?](#how-does-it-work-under-the-hood-i-want-to-know-technical-details)
+    * [Is a trained model sensitive to changes in image intensity or object size (as compared to the training images)?](#is-a-trained-model-sensitive-to-changes-in-image-intensity-or-object-size-as-compared-to-the-training-images)
+    * [Do you support or recommend "transfer learning"?](#do-you-support-or-recommend-transfer-learning)
+* [Postprocessing/quantification](#postprocessing-quantification)
+    * [Is it possible to "refine" the shape of the predicted objects (e.g. for not fully star-convex objects)?](#is-it-possible-to-refine-the-shape-of-the-predicted-objects-e-g-for-not-fully-star-convex-objects)
+    * [How do I evaluate the quality of the predicted results of a model?](#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model)
+    * [How can I perform measurements of the predicted objects in software X?](#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x)
+    * [How can I import the predicted results into software X?](#how-can-i-import-the-predicted-results-into-software-x)
+* [Fiji/ImageJ](#fiji-imagej)
+    * [After training in Python, how do I export a model to be used in Fiji? Do I have to be careful with the version of TensorFlow?](#after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow)
+    * [Can it be used in DeepImageJ?](#can-it-be-used-in-deepimagej)
+    * [The Fiji plugin currently only supports 2D images. Is 3D support planned?](#the-fiji-plugin-currently-only-supports-2d-images-is-3d-support-planned)
+    * [Are there differences between the Python and Fiji versions?](#are-there-differences-between-the-python-and-fiji-versions)
+ -->
+
+<h2 id="data">Data<a class="headerlink" href="#data" title="Permanent link">#</a></h2>
+<h3 id="will-it-work-for-my-data-application">Will it work for my data/application?<a class="headerlink" href="#will-it-work-for-my-data-application" title="Permanent link">#</a></h3>
+<h4 id="how-do-i-know-if-my-objects-of-interest-are-sufficiently-star-convex-i-e-is-stardist-a-good-choice-for-my-data">How do I know if my objects of interest are (sufficiently) star-convex, i.e. is StarDist a good choice for my data?<a class="headerlink" href="#how-do-i-know-if-my-objects-of-interest-are-sufficiently-star-convex-i-e-is-stardist-a-good-choice-for-my-data" title="Permanent link">#</a></h4>
+<p>In a nutshell, most blob-like object shapes are star-convex (see <a href="https://en.wikipedia.org/wiki/Star-shaped_polygon">Wikipedia article</a>). If you have labeled images, you can load your data in our <a href="https://github.com/stardist/stardist/tree/master/examples">example notebooks</a> and see how well it can be reconstructed with a star-convex polygon/polyhedron representation. An average reconstruction IoU score (mean intersection of union score) of 0.8 or higher could be generally considered good enough.</p>
+<h4 id="other-stains-markers-with-different-appearance-quality-or-inhomogeneity">Other stains/markers with different appearance, quality, or inhomogeneity?<a class="headerlink" href="#other-stains-markers-with-different-appearance-quality-or-inhomogeneity" title="Permanent link">#</a></h4>
+<p>Please first <a href="#how-do-i-know-if-my-objects-of-interest-are-sufficiently-star-convex-i-e-is-stardist-a-good-choice-for-my-data">verify that the shapes of your objects are star-convex</a>, i.e. blob-like. Examples of objects (segmentable by StarDist) include cells in brightfield images and stained structures in fluorescence or histology images. Where stains are used, an object can have its whole area stained, just its boundary stained, or be negatively stained (i.e. it is dark compared to other regions of the image). Next, please <a href="#how-do-i-know-if-a-pretrained-or-any-model-is-suitable-good-enough-for-my-data">check if one of the pretrained models works for your data</a>.</p>
+<p>If your data is suitable for StarDist, but there is no pretrained model available, you need to train your own model. To that end, you need <a href="#labeling-annotation">labeled images</a> before you can train your model (you can use the provided <a href="https://github.com/stardist/stardist/tree/master/examples">example notebooks</a> where you replace the example data with your own).</p>
+<h4 id="can-other-objects-besides-round-nuclei-be-segmented-e-g-multi-lobe-nuclei-granules-bacteria">Can other objects besides round nuclei be segmented (e.g. multi-lobe nuclei, granules, bacteria)?<a class="headerlink" href="#can-other-objects-besides-round-nuclei-be-segmented-e-g-multi-lobe-nuclei-granules-bacteria" title="Permanent link">#</a></h4>
+<p>The short answer is that StarDist should work well for segmenting all kinds of blob-like objects <a href="#how-do-i-know-if-my-objects-of-interest-are-sufficiently-star-convex-i-e-is-stardist-a-good-choice-for-my-data">with a star-convex shape</a>. However, it typically performs quite a bit better for roundish shapes compared to strongly elongated ones. For the latter, you often need to increase the number of rays to get decent results.</p>
+<h4 id="with-multiple-nucleus-types-is-it-possible-to-only-segment-some-or-classify-in-addition-to-segmentation">With multiple nucleus types, is it possible to only segment some or classify in addition to segmentation?<a class="headerlink" href="#with-multiple-nucleus-types-is-it-possible-to-only-segment-some-or-classify-in-addition-to-segmentation" title="Permanent link">#</a></h4>
+<p>If there are multiple object/cell types in your image and you only want to segment some of them, you have several options. First, you can annotate only the object type(s) of interest in your training data, implicitly telling StarDist to consider everything else as background. While this can work, it might make it more difficult for StarDist to reliably distinguish between objects and background, especially if the visual differences between object types are subtle. Alternatively, you can annotate all objects in the training data, such that StarDist will learn to segment objects of all types. In a second step, you would have to filter out all objects of those types you are not interested in. This can either be done manually or with a different classification model.</p>
+<p>Ideally, StarDist could additionally classify all objects while segmenting them. Although this is currently not possible, we might add this feature in a future version.</p>
+<h4 id="use-for-cell-counting-or-centroid-localization">Use for cell counting or centroid localization?<a class="headerlink" href="#use-for-cell-counting-or-centroid-localization" title="Permanent link">#</a></h4>
+<p>If you just want to count or localize the centroids of cells, it might be a bit overkill to use StarDist (although trying one of the <a href="https://github.com/stardist/stardist#pretrained-models-for-2d">pretrained models</a> is always a good idea). Dedicated cell counting and centroid localization approaches do exist, and they often need weaker forms of labeling, such as cell counts per training image or point annotations for cell centroids. However, if such centroid localization methods yield suboptimal results (e.g. in the case of very densely packed cells/nuclei) it might be worth to spend the extra annotation effort and train a dedicated StarDist model.</p>
+<h3 id="data-format-pre-processing">Data format/pre-processing<a class="headerlink" href="#data-format-pre-processing" title="Permanent link">#</a></h3>
+<h4 id="do-i-need-to-pre-process-my-images-e-g-background-subtraction-filtering">Do I need to pre-process my images (e.g. background subtraction, filtering)?<a class="headerlink" href="#do-i-need-to-pre-process-my-images-e-g-background-subtraction-filtering" title="Permanent link">#</a></h4>
+<p>In general, special pre-processing of images (such as background subtraction, denoising, etc) is not necessary. However it is reasonable to scale your input images such that the overall size of objects (in pixels) is similar to the size of objects used during training. If you have trained your own model, that means to always ensure that new images have roughly the same pixel size as the training images. This will make it much easier for StarDist to learn and might also avoid erroneous predictions of objects that are either too small or too large.</p>
+<p>If you are using a <a href="https://github.com/stardist/stardist#pretrained-models-for-2d">pre-trained model</a>, it is important to know what kind of images it was trained with to understand if your image data is similar enough. In some cases, you can pre-process your images to make them suitable for a pre-trained model (e.g. up/downscaling of the image).</p>
+<h4 id="is-it-advantageous-to-preprocess-3d-stacks-to-adjust-the-axial-resolution">Is it advantageous to preprocess 3D stacks to adjust the axial resolution?<a class="headerlink" href="#is-it-advantageous-to-preprocess-3d-stacks-to-adjust-the-axial-resolution" title="Permanent link">#</a></h4>
+<p>If your images contain only very few (&lt;10) axial planes, you might consider doing a 2D segmentation from a maximum intensity projection (MIP) of the 3D stack. But the MIP should only be one or two cell layers thick. If you can't individualize cells by eye, there is little hope that StarDist will get it right.</p>
+<p>If you need 3D segmentations, StarDist 3D does support anisotropic data (e.g. a 5x larger axial vs lateral pixel size should not be a problem). However, we sometimes found it advantageous to upscale the axial resolution to make objects appear more isotropic in the images. Hence, first try it directly with the anisotropic data and only if that doesn't lead to good results you could upscale the data isotropically. Note, that as one is not interested in restoring the image intensity signal but rather only segmenting the objects, it most likely would not make sense to use <a href="http://csbdeep.bioimagecomputing.com/examples/isotropic_reconstruction/">Isotropic CARE</a>.</p>
+<h4 id="is-a-specific-image-format-size-or-normalization-required">Is a specific image format, size, or normalization required?<a class="headerlink" href="#is-a-specific-image-format-size-or-normalization-required" title="Permanent link">#</a></h4>
+<p>StarDist is in general not limited to images of specific formats, bit-depths, or sizes. Any input image however needs to be normalized to floating point values roughly in the range 0..1 before network prediction. Our <a href="https://github.com/stardist/stardist/tree/master/examples">example notebooks</a> demonstrate how this normalization is done in Python, and our <a href="https://imagej.net/StarDist">Fiji plugin</a> does this by default.</p>
+<p>StarDist can be trained and predict on images with arbitrary spatial dimensions, but once a model is trained it is limited to its specific number of <a href="#are-multi-channel-images-supported">input channels</a> (e.g. one cannot use a model trained for 2D RGB images on 2D single channel images).</p>
+<p>StarDist does not put any constraints on the specific size of the input image: all padding and cropping necessary for the actual neural network is automatically handled for you. Also note that StarDist can do tiled prediction of large images in case of limited GPU memory.</p>
+<h4 id="are-multi-channel-images-supported">Are multi-channel images supported?<a class="headerlink" href="#are-multi-channel-images-supported" title="Permanent link">#</a></h4>
+<p>A StarDist model is always trained to work for images with specific input channels in a given order. On one hand, that means you can train your own model with any number of input channels that you think might be helpful to accurately segment your images. On the other hand, these channels have to be always present in images that you want to segment using this model. Note that this also applies to the <a href="#using-pretrained-models">pretrained models that we provide</a>, which expect images with specific input channels.</p>
+<p>If images have additional channels or channels in a different order than expected by a trained StarDist model, you first need to re-arrange them. For example, you may need to split the image channels and select the appropriate channel image (e.g. DAPI) before you can apply our  pretrained model for fluorescent nuclei in Fiji. You can then use the resulting segmentation to perform measurements in the other channels.</p>
+<h4 id="what-if-my-training-dataset-does-not-fit-into-cpu-memory">What if my training dataset does not fit into (CPU) memory?<a class="headerlink" href="#what-if-my-training-dataset-does-not-fit-into-cpu-memory" title="Permanent link">#</a></h4>
+<p>If you cannot load your full training data into CPU memory (e.g. when using many large annotated 3D volumes), you can do the following:</p>
+<ul>
+<li>Use <a href="https://www.tensorflow.org/api_docs/python/tf/keras/utils/Sequence">keras Sequences</a> to lazily load your images and masks</li>
+<li>Disable sample caching in the config <code>config = Config3D(..., train_sample_cache = False)</code></li>
+<li>Use <code>model.train(X,Y,...)</code> with <code>X</code> and <code>Y</code> now being keras Sequence objects</li>
+</ul>
+<p>This should lead to an almost constant memory footprint during training.</p>
+<h2 id="labeling-annotation">Labeling/annotation<a class="headerlink" href="#labeling-annotation" title="Permanent link">#</a></h2>
+<h3 id="how-to-label">How to label<a class="headerlink" href="#how-to-label" title="Permanent link">#</a></h3>
+<h4 id="should-i-annotate-a-few-entire-raw-images-stacks-or-is-it-better-to-annotate-several-smaller-image-crops">Should I annotate a few entire raw images/stacks, or is it better to annotate several smaller image crops?<a class="headerlink" href="#should-i-annotate-a-few-entire-raw-images-stacks-or-is-it-better-to-annotate-several-smaller-image-crops" title="Permanent link">#</a></h4>
+<p>In general, it is better to annotate several image crops instead of entire (big) images or stacks. It is important that the content within annotated training images is representative of the content within images that you want to predict on later, after the model has been trained. In other words, the training data should cover the full range of variability that you expect in your (future) data.</p>
+<h4 id="which-size-should-the-training-images-be">Which size should the training images be?<a class="headerlink" href="#which-size-should-the-training-images-be" title="Permanent link">#</a></h4>
+<p>As <a href="#should-i-annotate-a-few-entire-raw-images-stacks-or-is-it-better-to-annotate-several-smaller-image-crops">mentioned earlier</a>, it is generally better to annotate a variety of image crops as your training data. However, those crops must be big enough to contain entire fully visible objects and provide some context around them. Also make sure that not too many of the annotated objects are touching the border (it's fine if some do, but it should not be the majority). Example: if you have small cells with a diameter of 20 pixels, it might be sufficient to have annotated images of size 160x160, whereas if your objects have a diameter of 80 pixels, you would need to use larger annotated images e.g. of size 512x512. </p>
+<p>The "patch size" is an important parameter for training StarDist, and the size of images used for training affects what an appropriate value for the patch size should be (to maintain compatibility with the neural network architecture). For example, the patch size used for training StarDist must be smaller or equal than the size of the smallest annotated training image. To be on the safe side, ensure that the patch size is divisible by 16 along all dimensions. For example, you can annotate image crops of 300x300 pixels and then use a patch size of 256x256 pixels for training.</p>
+<h4 id="is-there-an-upper-size-limit-for-objects-to-be-well-segmented">Is there an upper size limit for objects to be well segmented?<a class="headerlink" href="#is-there-an-upper-size-limit-for-objects-to-be-well-segmented" title="Permanent link">#</a></h4>
+<p>The maximal size of objects that can be well segmented depends on the receptive field of the neural network used inside a StarDist model.</p>
+<p>For the default StarDist 2D network configuration, this is roughly 90 pixels. If your objects are larger than this and the segmentation results indicate over-segmentation, you can either a) downscale your input images such that the object size becomes smaller, or b) increase the receptive field of a StarDist model by changing the <em>grid</em> parameter in the model configuration (e.g. setting <code>grid=(2,2)</code> will roughly double the receptive field). Grid values of 4 and even 8 do make sense for images with a large minimum object size, e.g. 5x the size of the grid value.</p>
+<p>This is similar for StarDist 3D, although the receptive field for the default network configuration is only roughly 35 pixels. Besides downscaling your input images, you can also change the grid parameter as mentioned above, but do not increase it for Z if you have strongly anisotropic images with relatively few axial planes, e.g. use <code>grid=(1,2,2)</code>. Furthermore, you can also slightly increase the receptive field by changing the <em>backbone</em> in the configuration to a U-Net, i.e. by using <code>backbone='unet'</code>.</p>
+<h4 id="do-i-have-to-annotate-all-nuclei-objects-in-a-training-image-what-about-those-that-are-only-partially-visible-what-about-other-objects-not-of-interest">Do I have to annotate all nuclei (objects) in a training image? What about those that are only partially visible? What about other objects not of interest?<a class="headerlink" href="#do-i-have-to-annotate-all-nuclei-objects-in-a-training-image-what-about-those-that-are-only-partially-visible-what-about-other-objects-not-of-interest" title="Permanent link">#</a></h4>
+<p>Sparse labelling is not supported at this point, i.e. you must label all the objects in your chosen training images, even if they are only partially visible. If you don't do this, the trained model can be confused as to which pixels belong to objects and which belong to the background. As a consequence, this might result in many objects being missed during prediction.</p>
+<p>If there are any other objects or structures present in the image, which are not of interest, there are two options. First, annotate them too for training and then filter them out later from the predicted objects. (In the future, we <em>might</em> add an option to additionally classify different objects types, making this easier.) I would recommend this in many cases, especially when the objects are also star-convex or look very similar to the objects of interest. Second, leave unwanted objects or structures out of the annotation if they can easily be distinguished from the objects of interest. If in doubt, try both strategies.</p>
+<h4 id="is-it-better-to-annotate-images-from-scratch-or-to-bootstrap-curate-imperfect-annotations-e-g-from-another-method-is-training-sensitive-to-annotation-mistakes">Is it better to annotate images from scratch or to bootstrap/curate imperfect annotations (e.g. from another method)? Is training sensitive to annotation mistakes?<a class="headerlink" href="#is-it-better-to-annotate-images-from-scratch-or-to-bootstrap-curate-imperfect-annotations-e-g-from-another-method-is-training-sensitive-to-annotation-mistakes" title="Permanent link">#</a></h4>
+<p>In practice, you probably would like to use the labeling approach that requires the least amount of manual annotation/curation work. It depends on your data whether this is labeling from scratch or curating an imperfect automatic labeling.</p>
+<p>Annotating images from scratch is often easier because it doesn't involve obtaining predictions and curating them. It can be a good strategy if the task is not too difficult.</p>
+<p>If you already have an instance segmentation method with decent results, you can try training StarDist by using its predictions as ground truth. As long as there are no <em>systematic</em> mistakes in the ground truth, we have observed that training can still be successful. Especially when the segmentation task is more difficult (e.g. noisy images and/or strong appearance variations), it often makes sense to train an initial model, curate its predictions and add them to the training data.</p>
+<h4 id="how-many-images-or-nucleus-object-instances-do-i-have-to-annotate-for-good-results">How many images or nucleus (object) instances do I have to annotate for good results?<a class="headerlink" href="#how-many-images-or-nucleus-object-instances-do-i-have-to-annotate-for-good-results" title="Permanent link">#</a></h4>
+<p>This is very difficult to answer in general, since it really depends on your specific data. The more variability is in your data (object shapes and packing, background, noise, signal variation, aberrations), the more training data (in form of a wide range of examples) is necessary so that the network can learn to perform accurate predictions.</p>
+<p>We have often seen good results from as few as 5-10 image crops each having 10-20 annotated objects (in 2D), but your mileage may vary substantially. You can always start with a small training dataset, inspect/curate the results and iterate. </p>
+<p>Furthermore, one can/should always use <em>data augmentation</em> to artificially inflate the training data by adding training images with <em>plausible</em> appearance variations. What plausible means depends on the data at hand, but some operations (random flips and rotations, intensity shifts) can be used in most cases and are demonstrated e.g. in the training <a href="https://github.com/stardist/stardist/tree/master/examples">example notebook</a>. </p>
+<h3 id="software-format-for-labeling">Software/format for labeling<a class="headerlink" href="#software-format-for-labeling" title="Permanent link">#</a></h3>
+<h4 id="in-which-format-do-i-need-to-save-my-image-annotations">In which format do I need to save my image annotations?<a class="headerlink" href="#in-which-format-do-i-need-to-save-my-image-annotations" title="Permanent link">#</a></h4>
+<p>The image annotations (also known as <em>label images</em> or <em>label masks</em>) should be integer-valued (e.g. 8-bit, 16-bit, 32-bit) TIFF files where all background pixels have value 0 and each object instance is represented by an area/volume filled with a unique integer value. It does not matter what the values are and they do not need to be consecutive. Please note that a foreground/background segmentation mask, where all object instances are denoted by the same value, is not sufficient for StarDist training.</p>
+<p>Note that for visualization purposes, label images are often displayed with each object instance in a different color (to tell them apart) on a black background; this is the result of applying a look-up table (e.g. <em>Glasbey on dark</em> in Fiji). As mentioned above, the label masks for StarDist must be integer-valued TIFF files and not RGB files, i.e. the specific color does not matter.</p>
+<h4 id="which-software-do-you-recommend-to-annotate-2d-and-3d-images">Which software do you recommend to annotate 2D and 3D images?<a class="headerlink" href="#which-software-do-you-recommend-to-annotate-2d-and-3d-images" title="Permanent link">#</a></h4>
+<p>In 2D, there are several options, among them being <a href="http://fiji.sc/">Fiji</a>, <a href="https://qupath.github.io">QuPath</a>, or <a href="https://imagej.net/Labkit">Labkit</a>. Although each of these provide decent annotation tools, we currently recommend using Labkit for its easy label export. Please read <a href="https://github.com/stardist/stardist#annotating-images">here</a> for more detailed instructions how to use Labkit to generate annotations.  </p>
+<p>In 3D, there are fewer options: <a href="https://github.com/maarzt/imglib2-labkit">Labkit</a> and <a href="https://github.com/saalfeldlab/paintera">Paintera</a> (the latter being very sophisticated but having a steeper learning curve).</p>
+<h4 id="i-ve-annotated-my-images-in-software-x-how-do-i-export-the-annotations-as-label-images">I've annotated my images in software X, how do I export the annotations as label images?<a class="headerlink" href="#i-ve-annotated-my-images-in-software-x-how-do-i-export-the-annotations-as-label-images" title="Permanent link">#</a></h4>
+<p>Here is some advice for exporting annotations to a label image from different tools (see <a href="#which-software-do-you-recommend-to-annotate-2d-and-3d-images">here</a> for a list of recommended tools). </p>
+<ul>
+<li>Fiji: Use <a href="https://gist.github.com/maweigert/9f2684f36d3272786461a0c18d4ea176">this script</a> to convert annotations to label images.</li>
+<li>Labkit: Please read <a href="https://github.com/stardist/stardist#annotating-images">this</a>.</li>
+<li>QuPath: See <a href="https://forum.image.sc/t/export-qupath-annotations-for-stardist-training/37391">this post</a> to get started.</li>
+</ul>
+<h2 id="using-pretrained-models">Using pretrained models<a class="headerlink" href="#using-pretrained-models" title="Permanent link">#</a></h2>
+<h4 id="how-do-i-know-if-a-pretrained-or-any-model-is-suitable-good-enough-for-my-data">How do I know if a pretrained (or any) model is suitable/good enough for my data?<a class="headerlink" href="#how-do-i-know-if-a-pretrained-or-any-model-is-suitable-good-enough-for-my-data" title="Permanent link">#</a></h4>
+<p>First, you can take a look at the existing pretrained models and inspect the images they were trained on, to get an idea if one of them might be suitable for your data. At the moment, you can find an overview of pretrained models <a href="https://github.com/stardist/stardist#pretrained-models-for-2d">here</a> and <a href="https://imagej.net/StarDist#Plugin">here</a>, including links to the training datasets. Furthermore, our <a href="https://github.com/stardist/stardist/tree/master/examples">example notebooks</a> also demonstrate how to show a list of the available pretrained models.</p>
+<p>If you found a promising pretrained model for your data, it is probably easiest to quickly try it out with our <a href="https://imagej.net/StarDist">Fiji plugin</a> and manually inspect if the results are plausible. If that's the case, you may also want to <a href="#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model">quantitatively evaluate the results</a>.</p>
+<h4 id="do-i-need-to-rescale-my-images-how-do-i-know-which-pixel-resolution-is-required">Do I need to rescale my images? How do I know which pixel resolution is required?<a class="headerlink" href="#do-i-need-to-rescale-my-images-how-do-i-know-which-pixel-resolution-is-required" title="Permanent link">#</a></h4>
+<p>Besides being rather robust to intensity changes, our pretrained models are able to segment objects with a fair range of sizes. Please take a look at the respective training datasets to get an idea of the object size variations that the model should be able handle. In the future, we might provide additional metadata for each pretrained model to help you with that. Also please have a look <a href="#is-there-an-upper-size-limit-for-objects-to-be-well-segmented">at this related question</a>.</p>
+<p>If your images contain relatively large objects and you observe lots of over-segmentation mistakes (i.e. several smaller objects predicted instead of an expected large one), you should try to reduce the pixel resolution of the image before applying StarDist.</p>
+<h4 id="is-there-a-pretrained-model-for-3d-or-do-you-plan-to-release-one">Is there a pretrained model for 3D, or do you plan to release one?<a class="headerlink" href="#is-there-a-pretrained-model-for-3d-or-do-you-plan-to-release-one" title="Permanent link">#</a></h4>
+<p>Unfortunately not, but we would like to provide one at some point. A major issue is the lack of available training data.</p>
+<h4 id="do-you-have-plans-to-release-other-pretrained-models">Do you have plans to release other pretrained models?<a class="headerlink" href="#do-you-have-plans-to-release-other-pretrained-models" title="Permanent link">#</a></h4>
+<p>There are no immediate plans at the moment, but we can relatively easily be persuaded to add new ones given a common use case and the availability of suitable training data.</p>
+<h2 id="speed-hardware-gpu">Speed/Hardware/GPU<a class="headerlink" href="#speed-hardware-gpu" title="Permanent link">#</a></h2>
+<h4 id="how-can-i-speed-up-the-prediction-is-it-possible-to-predict-on-very-large-images-stacks">How can I speed up the prediction? Is it possible to predict on very large images/stacks?<a class="headerlink" href="#how-can-i-speed-up-the-prediction-is-it-possible-to-predict-on-very-large-images-stacks" title="Permanent link">#</a></h4>
+<p>StarDist prediction consists of two phases:</p>
+<ol>
+<li>
+<p>Neural network prediction based on a normalized input image. This can optionally be GPU-accelerated (in both Python and Fiji) if TensorFlow with the necessary dependencies is installed. (GPU acceleration is very much recommended for 3D images and large 2D images.)</p>
+</li>
+<li>
+<p>Post-processing of the neural network output, which involves a non-maximum suppression step (using the provided probability and overlap thresholds) to prune redundant object instances. This step does not use the GPU (and cannot reasonably be changed to do so), but will take advantage of all available CPU cores, i.e. can be substantially faster on more powerful multi-core CPUs. StarDist was properly installed with multi-core (OpenMP) support if it is running on several CPU cores while predicting.</p>
+</li>
+</ol>
+<p>In order to handle large images (or stacks) that cannot be processed all at once in step 1, there is an option to internally process the input image in separate overlapping tiles. To that end, you can specify the number of tiles in both Python (parameter <code>n_tiles</code> of <code>model.predict</code>) and Fiji. This is especially necessary because GPUs often have limited memory that does not permit to process large images directly.</p>
+<p>Step 2 is currently processed for the entire image, which can be a computational bottleneck for large images. To alleviate this issue, we are currently working on another option that will allow us to also perform this step independently for regions of the image.
+Note that we also consider supporting cases where the input image (and resulting prediction) are too large to fit in host memory, i.e. cannot be loaded all at once.</p>
+<h4 id="what-hardware-do-you-recommend">What hardware do you recommend?<a class="headerlink" href="#what-hardware-do-you-recommend" title="Permanent link">#</a></h4>
+<p>If you occasionally want to segment 2D images of moderate size (e.g. 1024x1024 pixels), you do not need special hardware – a typical laptop will be enough. However, as <a href="#how-can-i-speed-up-the-prediction-is-it-possible-to-predict-on-very-large-images-stacks">mentioned before</a>, both a more powerful multi-core CPU and a recent GPU can substantially speed up prediction with StarDist. Furthermore, training your own model without a GPU is not recommended at all, as this can be <em>very</em> slow, especially for 3D images. Of course, if you intend to use StarDist for large images or stacks, you will need a sufficient amount of RAM and storage.</p>
+<p>Regarding the choice of GPU, it (currently) has to be a <a href="https://en.wikipedia.org/wiki/CUDA">CUDA</a>-compatible GPU from Nvidia. There are many options to choose from, which do change all the time. A very important factor besides speed is the amount of GPU memory, which should be 8 GB or more when training StarDist 3D models. It is much less important for 2D training and prediction (in both 2D and 3D). We personally use rather high-end (but now 3+ years old) GPUs (1080, Titan X Maxwell, Titan X Pascal).</p>
+<h2 id="method-technical">Method/technical<a class="headerlink" href="#method-technical" title="Permanent link">#</a></h2>
+<h4 id="what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values">What are the probability and overlap/NMS thresholds? How do I select good values?<a class="headerlink" href="#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values" title="Permanent link">#</a></h4>
+<p>StarDist internally uses a neural network to predict two separate quantities per pixel, 1) an object probability and 2) several distances to the object boundary that the pixel belongs to. Only pixels with an object probability above a chosen <em>probability threshold</em> are allowed to "vote" for an object candidate (i.e. a star-convex polygon defined via the predicted distances). Note that many pixels will vote for similar object candidates, since they belong to the same object. Hence, after all object candidates have been collected, a non-maximum suppression (NMS) step is used to prune all the redundant objects, such that (ideally) only one object is retained for every true object in the image. To that end, we need to define which object candidates likely represent the same object in the image. We use a typical approach by defining object similarity in terms of overlap, i.e. two objects are considered equal if their (normalized) intersection area/volume exceeds an <em>overlap/NMS threshold</em>.</p>
+<p>At the end of our <a href="https://github.com/stardist/stardist/tree/master/examples">training notebooks</a>, we automatically optimize both thresholds based on your validation data, such that they should yield good results in many cases. However, both thresholds can be adjusted to your specific application. Higher values of the probability threshold can yield fewer segmented objects, but will likely avoid false positives. Higher values of the overlap threshold will allow segmented objects to overlap more. If your objects should never overlap, you may set the overlap threshold close to 0. </p>
+<h4 id="how-does-it-work-under-the-hood-i-want-to-know-technical-details">How does it work under the hood? I want to know technical details.<a class="headerlink" href="#how-does-it-work-under-the-hood-i-want-to-know-technical-details" title="Permanent link">#</a></h4>
+<p>Please see the <a href="#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values">high-level overview</a> above. If you want to know more, please have a look at <a href="https://github.com/stardist/stardist">our documentation</a> and the papers:</p>
+<ul>
+<li>
+<p>Uwe Schmidt, Martin Weigert, Coleman Broaddus, and Gene Myers.<br />
+<a href="https://arxiv.org/abs/1806.03535"><em>Cell Detection with Star-convex Polygons</em></a>.<br />
+International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI), Granada, Spain, September 2018.</p>
+</li>
+<li>
+<p>Martin Weigert, Uwe Schmidt, Robert Haase, Ko Sugawara, and Gene Myers.<br />
+<a href="http://openaccess.thecvf.com/content_WACV_2020/papers/Weigert_Star-convex_Polyhedra_for_3D_Object_Detection_and_Segmentation_in_Microscopy_WACV_2020_paper.pdf"><em>Star-convex Polyhedra for 3D Object Detection and Segmentation in Microscopy</em></a>.<br />
+The IEEE Winter Conference on Applications of Computer Vision (WACV), Snowmass Village, Colorado, March 2020</p>
+</li>
+</ul>
+<h4 id="is-a-trained-model-sensitive-to-changes-in-image-intensity-or-object-size-as-compared-to-the-training-images">Is a trained model sensitive to changes in image intensity or object size (as compared to the training images)?<a class="headerlink" href="#is-a-trained-model-sensitive-to-changes-in-image-intensity-or-object-size-as-compared-to-the-training-images" title="Permanent link">#</a></h4>
+<p>A trained model will typically only work well for images that are similar to those that the model was trained on. However, one can use <em>data augmentation</em> during training to synthetically vary image intensities and object sizes. As a result, the trained model will be robust towards these variations, since it was trained to expect these. Also see this <a href="#how-do-i-know-if-a-pretrained-or-any-model-is-suitable-good-enough-for-my-data">previous question</a>.</p>
+<h4 id="do-you-support-or-recommend-transfer-learning">Do you support or recommend "transfer learning"?<a class="headerlink" href="#do-you-support-or-recommend-transfer-learning" title="Permanent link">#</a></h4>
+<p>While <a href="https://en.wikipedia.org/wiki/Transfer_learning">transfer learning</a> is promising in case of limited annotated training data, we currently do not support it because we haven't investigated how and when to use it. (However, it is possible with the current code, but simply not documented.)</p>
+<p>Furthermore, we have made the observation that training (from scratch) using a combination of a small custom dataset together with an existing bigger (and somewhat similar) dataset can lead to better results than just training with the custom data.</p>
+<h2 id="postprocessing-quantification">Postprocessing/quantification<a class="headerlink" href="#postprocessing-quantification" title="Permanent link">#</a></h2>
+<h4 id="is-it-possible-to-refine-the-shape-of-the-predicted-objects-e-g-for-not-fully-star-convex-objects">Is it possible to "refine" the shape of the predicted objects (e.g. for not fully star-convex objects)?<a class="headerlink" href="#is-it-possible-to-refine-the-shape-of-the-predicted-objects-e-g-for-not-fully-star-convex-objects" title="Permanent link">#</a></h4>
+<p>It is possible, but not supported in our software at the moment. We are looking into this but can't promise if and when a solution will be available. However, some people have already used StarDist to generate high-quality <em>seeds</em> and then used other seed-based methods (e.g. watershed) to obtain instance segmentations that are not restricted to star-convex object shapes.</p>
+<h4 id="how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model">How do I evaluate the quality of the predicted results of a model?<a class="headerlink" href="#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model" title="Permanent link">#</a></h4>
+<p>Ultimately, this depends on your application, i.e. what you want to do with the segmentation results (e.g. counting, intensity measurements, tracking). Hence, we consider a typical evaluation approach here, which we also carry out at the end of our <a href="https://github.com/stardist/stardist/tree/master/examples">training notebooks</a>.</p>
+<p>The detection/segmentation performance can be quantitatively evaluated by considering objects in the ground truth to be correctly matched if there are predicted objects with overlap (<a href="https://en.wikipedia.org/wiki/Jaccard_index">intersection over union (IoU)</a>) beyond a chosen IoU threshold (value between 0 and 1).
+The obtained matching statistics (accuracy, recall, precision, etc.) can be quite informative for the model's performance (see <a href="https://en.wikipedia.org/wiki/Sensitivity_and_specificity">sensitivity and specificity</a> for further details).
+The IoU threshold can be between 0 (even slightly overlapping objects count as correctly predicted) and 1 (only pixel-perfectly overlapping objects count) and which threshold to use depends on the needed segmentation precision/application.</p>
+<h4 id="how-can-i-perform-measurements-of-the-predicted-objects-in-software-x">How can I perform measurements of the predicted objects in software X?<a class="headerlink" href="#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x" title="Permanent link">#</a></h4>
+<p>The output of StarDist is a label image and/or a list of (polygon/polyhedron) ROIs, one for each object. These can be used for quantification, for example:</p>
+<ul>
+<li>
+<p>Python: Based on the label image, the function <a href="https://scikit-image.org/docs/0.17.x/api/skimage.measure.html#skimage.measure.regionprops">regionprops</a> (or <a href="https://scikit-image.org/docs/0.17.x/api/skimage.measure.html#skimage.measure.regionprops_table">regionprops_table</a>) from <a href="https://scikit-image.org">scikit-image</a> offers many different measurements for each object instance. Note that you can also <a href="https://github.com/stardist/stardist/blob/master/examples/other2D/export_imagej_rois.ipynb">export 2D predictions as ImageJ ROIs</a>.</p>
+</li>
+<li>
+<p>Fiji/ImageJ: The <em>ROI Manager</em> can be used to measure many different properties (which can be chosen via <em>Analyze &gt; Set Measurements...</em>)</p>
+</li>
+</ul>
+<h4 id="how-can-i-import-the-predicted-results-into-software-x">How can I import the predicted results into software X?<a class="headerlink" href="#how-can-i-import-the-predicted-results-into-software-x" title="Permanent link">#</a></h4>
+<p>As <a href="#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x">mentioned above</a>, StarDist can output its predictions as label images, or lists of polygon/polyhedron coordinates. Label images are quite universal and can be imported in many different software packages. In Python, the 2D polygon coordinates can also be <a href="https://github.com/stardist/stardist/blob/master/examples/other2D/export_imagej_rois.ipynb">exported as ImageJ ROIs</a>, or be serialized to different formats via <a href="https://github.com/Toblerity/Shapely">Shapely</a>.</p>
+<h2 id="fiji-imagej">Fiji/ImageJ<a class="headerlink" href="#fiji-imagej" title="Permanent link">#</a></h2>
+<h4 id="after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow">After training in Python, how do I export a model to be used in Fiji? Do I have to be careful with the version of TensorFlow?<a class="headerlink" href="#after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow" title="Permanent link">#</a></h4>
+<p>After training your StarDist model in Python, you can export it to be used in <a href="https://imagej.net/StarDist">Fiji</a> (or <a href="https://qupath.readthedocs.io/en/latest/docs/advanced/stardist.html">QuPath</a>) by calling <code>model.export_TF()</code>. This will create a ZIP file that contains the trained model in the correct format.</p>
+<p>It is important that the version of TensorFlow (a neural network library that StarDist depends on) used in Fiji (or QuPath) is the same or newer as in Python. You can find out which version is used in Python via <code>import tensorflow; print(tensorflow.__version__)</code>. In Fiji, you can manage your version of TensorFlow via <em>Edit &gt; Options &gt; TensorFlow...</em>. Note that this also applies to our pretrained models, which currently require TensorFlow 1.12.0 or newer.</p>
+<p><del>Note that StarDist currently <em>only</em> supports TensorFlow 1.x, i.e. do not upgrade or install a recent 2.x version.</del>
+Starting with version 0.6.0, StarDist for Python does work with either TensorFlow 1 or 2. Furthermore, when using TensorFlow 2, it appears that an exported model will work in Fiji with TensorFlow 1.14.0.</p>
+<h4 id="can-it-be-used-in-deepimagej">Can it be used in DeepImageJ?<a class="headerlink" href="#can-it-be-used-in-deepimagej" title="Permanent link">#</a></h4>
+<p>We recommend using <a href="https://imagej.net/StarDist">our plugin</a> when using StarDist in Fiji, because it bundles all the necessary steps.</p>
+<p>However, if you are an advanced user and want to use <a href="https://deepimagej.github.io/deepimagej/">DeepImageJ</a>, you should be able to do so with a <a href="#using-pretrained-models">pretrained</a> or <a href="#after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow">exported model</a>. However, this will only perform the neural network prediction and not the necessary <a href="#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values">non-maximum suppression (NMS)</a> step. You can call just the NMS step from our plugin (<em>Plugins &gt; StarDist &gt; Other &gt; StarDist 2D NMS (postprocessing only)</em>) though. Note that we haven't tested this workflow, but it should work in principle.</p>
+<h4 id="the-fiji-plugin-currently-only-supports-2d-images-is-3d-support-planned">The Fiji plugin currently only supports 2D images. Is 3D support planned?<a class="headerlink" href="#the-fiji-plugin-currently-only-supports-2d-images-is-3d-support-planned" title="Permanent link">#</a></h4>
+<p>Yes, we also want to support 3D in our <a href="https://imagej.net/StarDist">Fiji plugin</a>. However, there are some issues that we need to solve first, especially related to deployment (reliance on C++ code that isn't easily portable to Java).</p>
+<h4 id="are-there-differences-between-the-python-and-fiji-versions">Are there differences between the Python and Fiji versions?<a class="headerlink" href="#are-there-differences-between-the-python-and-fiji-versions" title="Permanent link">#</a></h4>
+<p>Regarding the prediction results of the neural network, they should be identical or only have negligible differences. However, our <a href="https://github.com/stardist/stardist">Python package</a> is the reference implementation with the most features, some of which are missing in Fiji.</p>
+<p>For example, besides lacking model training and 3D support, the Fiji plugin currently does not offer different normalization options for multi-channel images or quantitative evaluation of prediction results.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 30, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020 &ndash; 2024 StarDist docs authors.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/stardist" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/stardist/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.follow", "toc.integrate", "search.highlight", "navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.tracking", "content.action.edit"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+    
+  </body>
+</html>
