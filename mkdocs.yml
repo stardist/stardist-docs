@@ -20,7 +20,12 @@ plugins:
       redirect_maps:
         'docs/faq.html': 'faq.md'
   - git-revision-date-localized:
-      enable_creation_date: false
+      enable_creation_date: true
+  - git-committers:
+      repository: stardist/stardist-docs
+      branch: main
+      exclude:
+        - index.md
 
 theme:
   name: material
