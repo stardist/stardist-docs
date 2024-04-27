@@ -95,6 +95,8 @@ In general, special pre-processing of images (such as background subtraction, de
 
 If you are using a [pre-trained model](https://github.com/stardist/stardist#pretrained-models-for-2d), it is important to know what kind of images it was trained with to understand if your image data is similar enough. In some cases, you can pre-process your images to make them suitable for a pre-trained model (e.g. up/downscaling of the image).
 
+Note that you can use the optional parameter `scale` when calling `model.predict_instances` instead of manually rescaling your images before prediction.
+
 
 #### Is it advantageous to preprocess 3D stacks to adjust the axial resolution?
 
@@ -220,7 +222,7 @@ Furthermore, you might find additional models in the [BioImage Model Zoo (bioima
 
 Besides being rather robust to intensity changes, our pretrained models are able to segment objects with a fair range of sizes. Please take a look at the respective training datasets to get an idea of the object size variations that the model should be able handle. In the future, we might provide additional metadata for each pretrained model to help you with that. Also please have a look [at this related question](#is-there-an-upper-size-limit-for-objects-to-be-well-segmented).
 
-If your images contain relatively large objects and you observe lots of over-segmentation mistakes (i.e. several smaller objects predicted instead of an expected large one), you should try to reduce the pixel resolution of the image before applying StarDist.
+If your images contain relatively large objects and you observe lots of over-segmentation mistakes (i.e. several smaller objects predicted instead of an expected large one), you should try to reduce the pixel resolution of the image before applying StarDist. The easiest way to do that is to use the parameter `scale` when calling `model.predict_instances`.
 
 
 #### Is there a pretrained model for 3D, or do you plan to release one?
@@ -231,6 +233,8 @@ Unfortunately not, but we would like to provide one at some point. A major issue
 #### Do you have plans to release other pretrained models?
 
 There are no immediate plans at the moment, but we can relatively easily be persuaded to add new ones given a common use case and the availability of suitable training data.
+
+You might also find additional models at the [BioImage Model Zoo (bioimage.io)](https://bioimage.io/#/?tags=stardist&type=model).
 
 
 ## Speed/Hardware/GPU
@@ -245,15 +249,14 @@ StarDist prediction consists of two phases:
 
 In order to handle large images (or stacks) that cannot be processed all at once in step 1, there is an option to internally process the input image in separate overlapping tiles. To that end, you can specify the number of tiles in both Python (parameter `n_tiles` of `model.predict`) and Fiji. This is especially necessary because GPUs often have limited memory that does not permit to process large images directly.
 
-Step 2 is currently processed for the entire image, which can be a computational bottleneck for large images. To alleviate this issue, we are currently working on another option that will allow us to also perform this step independently for regions of the image.
-Note that we also consider supporting cases where the input image (and resulting prediction) are too large to fit in host memory, i.e. cannot be loaded all at once.
+Step 2 is currently processed for the entire image, which can be a bottleneck for huge images in terms of computation and memory. Therefore, there is a special prediction mode that jointly does both steps in overlapping blocks and additionally doesn't even require the whole input image (and label image output) to be loaded into CPU memory all at once (see [example notebook](https://nbviewer.jupyter.org/github/stardist/stardist/blob/main/examples/other2D/predict_big_data.ipynb)).
 
 
 #### What hardware do you recommend?
 
 If you occasionally want to segment 2D images of moderate size (e.g. 1024x1024 pixels), you do not need special hardware – a typical laptop will be enough. However, as [mentioned before](#how-can-i-speed-up-the-prediction-is-it-possible-to-predict-on-very-large-images-stacks), both a more powerful multi-core CPU and a recent GPU can substantially speed up prediction with StarDist. Furthermore, training your own model without a GPU is not recommended at all, as this can be *very* slow, especially for 3D images. Of course, if you intend to use StarDist for large images or stacks, you will need a sufficient amount of RAM and storage.
 
-Regarding the choice of GPU, it (currently) has to be a [CUDA](https://en.wikipedia.org/wiki/CUDA)-compatible GPU from Nvidia. There are many options to choose from, which do change all the time. A very important factor besides speed is the amount of GPU memory, which should be 8 GB or more when training StarDist 3D models. It is much less important for 2D training and prediction (in both 2D and 3D). We personally use rather high-end (but now 3+ years old) GPUs (1080, Titan X Maxwell, Titan X Pascal).
+Regarding the choice of GPU, it (currently) has to be a [CUDA](https://en.wikipedia.org/wiki/CUDA)-compatible GPU from Nvidia. There are many options to choose from, which do change all the time. A very important factor besides speed is the amount of GPU memory, which should be 8 GB or more when training StarDist 3D models. It is much less important for 2D training and prediction (in both 2D and 3D).
 
 
 ## Method/technical
@@ -277,6 +280,10 @@ International Conference on Medical Image Computing and Computer-Assisted Interv
 [*Star-convex Polyhedra for 3D Object Detection and Segmentation in Microscopy*](http://openaccess.thecvf.com/content_WACV_2020/papers/Weigert_Star-convex_Polyhedra_for_3D_Object_Detection_and_Segmentation_in_Microscopy_WACV_2020_paper.pdf).  
 The IEEE Winter Conference on Applications of Computer Vision (WACV), Snowmass Village, Colorado, March 2020
 
+- Martin Weigert and Uwe Schmidt.  
+[*Nuclei Instance Segmentation and Classification in Histopathology Images with Stardist*](https://arxiv.org/abs/2203.02284).  
+The IEEE International Symposium on Biomedical Imaging Challenges (ISBIC), Kolkata, India, March 2022.
+
 
 #### Is a trained model sensitive to changes in image intensity or object size (as compared to the training images)?
 
@@ -285,16 +292,20 @@ A trained model will typically only work well for images that are similar to tho
 
 #### Do you support or recommend "transfer learning"?
 
-While [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) is promising in case of limited annotated training data, we currently do not support it because we haven't investigated how and when to use it. (However, it is possible with the current code, but simply not documented.)
+While [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) is promising in case of limited annotated training data, we currently do not support it because we haven't investigated how and when to use it. (However, it is possible with the current code, but simply not documented, see this [forum thread](https://forum.image.sc/t/how-to-continue-training/73482).)
 
-Furthermore, we have made the observation that training (from scratch) using a combination of a small custom dataset together with an existing bigger (and somewhat similar) dataset can lead to better results than just training with the custom data.
+Furthermore, we have made the observation that training (from scratch) using a combination of a small custom dataset together with an existing bigger (and somewhat similar) dataset can also lead to better results than just training with the custom data.
 
 
 ## Postprocessing/quantification
 
 #### Is it possible to "refine" the shape of the predicted objects (e.g. for not fully star-convex objects)?
 
-It is possible, but not supported in our software at the moment. We are looking into this but can't promise if and when a solution will be available. However, some people have already used StarDist to generate high-quality *seeds* and then used other seed-based methods (e.g. watershed) to obtain instance segmentations that are not restricted to star-convex object shapes.
+It is possible, but not supported in our software at the moment. However, some people have already used StarDist to generate high-quality *seeds* and then used other seed-based methods (e.g. watershed) to obtain instance segmentations that are not restricted to star-convex object shapes.
+
+We also used an experimental 2D shape refinement approach when we participated in the [CoNIC 2022 challenge](https://conic-challenge.grand-challenge.org). The approach is documented in the paper [*Nuclei Instance Segmentation and Classification in Histopathology Images with Stardist*](https://arxiv.org/abs/2203.02284) and also contains a link to the experimental code.
+
+We might have a production-ready solution in the future but can't promise if and when one will be available.
 
 
 #### How do I evaluate the quality of the predicted results of a model?
@@ -317,26 +328,26 @@ The output of StarDist is a label image and/or a list of (polygon/polyhedron) RO
 
 #### How can I import the predicted results into software X?
 
-As [mentioned above](#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x), StarDist can output its predictions as label images, or lists of polygon/polyhedron coordinates. Label images are quite universal and can be imported in many different software packages. In Python, the 2D polygon coordinates can also be [exported as ImageJ ROIs](https://github.com/stardist/stardist/blob/main/examples/other2D/export_imagej_rois.ipynb), or be serialized to different formats via [Shapely](https://github.com/Toblerity/Shapely).
+As [mentioned above](#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x), StarDist can output its predictions as label images, or lists of polygon/polyhedron coordinates. Label images are quite universal and can be imported in many different software packages. In Python, the 2D polygon coordinates can also be [exported as ImageJ ROIs](https://github.com/stardist/stardist/blob/main/examples/other2D/export_imagej_rois.ipynb), or be serialized to different formats via [Shapely](https://github.com/shapely/shapely). The 3D predictions can also be exported as meshes via `obj` files (see [this](https://forum.image.sc/t/is-there-an-existing-way-to-convert-stardist-output-to-a-3d-mesh/92611)).
 
 
 ## Fiji/ImageJ
 
 #### After training in Python, how do I export a model to be used in Fiji? Do I have to be careful with the version of TensorFlow?
 
-After training your StarDist model in Python, you can export it to be used in [Fiji](https://imagej.net/plugins/stardist) (or [QuPath](https://qupath.readthedocs.io/en/latest/docs/advanced/stardist.html)) by calling `model.export_TF()`. This will create a ZIP file that contains the trained model in the correct format.
+After training your StarDist model in Python, you can export it to be used in [Fiji](https://imagej.net/plugins/stardist) (or [QuPath](https://qupath.readthedocs.io/en/stable/docs/deep/stardist.html)) by calling `model.export_TF()`. This will create a ZIP file that contains the trained model in the correct format.
 
-It is important that the version of TensorFlow (a neural network library that StarDist depends on) used in Fiji (or QuPath) is the same or newer as in Python. You can find out which version is used in Python via `import tensorflow; print(tensorflow.__version__)`. In Fiji, you can manage your version of TensorFlow via *Edit > Options > TensorFlow...*. Note that this also applies to our pretrained models, which currently require TensorFlow 1.12.0 or newer.
+It is important that the version of TensorFlow (a neural network library that StarDist depends on) used in Fiji (or QuPath) is the same or newer as in Python. You can find out which version is used in Python via `import tensorflow; print(tensorflow.__version__)`. In Fiji, you can manage your version of TensorFlow via *Edit > Options > TensorFlow...*. Note that this also applies to our pretrained models, which currently require TensorFlow 1.12.0 or newer. 
 
 <del>Note that StarDist currently *only* supports TensorFlow 1.x, i.e. do not upgrade or install a recent 2.x version.</del>
-Starting with version 0.6.0, StarDist for Python does work with either TensorFlow 1 or 2. Furthermore, when using TensorFlow 2, it appears that an exported model will work in Fiji with TensorFlow 1.14.0.
+Starting with version 0.6.0, StarDist for Python does work with either TensorFlow 1 or 2. Furthermore, when using TensorFlow 2, it appears that an exported model will work in Fiji with TensorFlow 1.14.0. We recommend to follow [this approach](https://gist.github.com/uschmidt83/4b747862fe307044c722d6d1009f6183) to export your model.
 
 
 #### Can it be used in DeepImageJ?
 
 We recommend using [our plugin](https://imagej.net/plugins/stardist) when using StarDist in Fiji, because it bundles all the necessary steps.
 
-However, if you are an advanced user and want to use [DeepImageJ](https://deepimagej.github.io/deepimagej/), you should be able to do so with a [pretrained](#using-pretrained-models) or [exported model](#after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow). However, this will only perform the neural network prediction and not the necessary [non-maximum suppression (NMS)](#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values) step. You can call just the NMS step from our plugin (*Plugins > StarDist > Other > StarDist 2D NMS (postprocessing only)*) though. Note that we haven't tested this workflow, but it should work in principle.
+However, if you are an advanced user and want to use [DeepImageJ](https://deepimagej.github.io), you should be able to do so with a [pretrained](#using-pretrained-models) or [exported model](#after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow). However, this will only perform the neural network prediction and not the necessary [non-maximum suppression (NMS)](#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values) step. You can call just the NMS step from our plugin (*Plugins > StarDist > Other > StarDist 2D NMS (postprocessing only)*) though. Note that we haven't tested this workflow, but it should work in principle. Additionally, DeepImageJ can also run StarDist models from [bioimage.io](https://bioimage.io/#/?tags=stardist&type=model).
 
 
 #### The Fiji plugin currently only supports 2D images. Is 3D support planned?
@@ -349,3 +360,5 @@ Yes, we also want to support 3D in our [Fiji plugin](https://imagej.net/plugins/
 Regarding the prediction results of the neural network, they should be identical or only have negligible differences. However, our [Python package](https://github.com/stardist/stardist) is the reference implementation with the most features, some of which are missing in Fiji.
 
 For example, besides lacking model training and 3D support, the Fiji plugin currently does not offer different normalization options for multi-channel images or quantitative evaluation of prediction results.
+
+Our [napari plugin](https://github.com/stardist/stardist-napari) is a more full-featured alternative to the Fiji plugin, including 3D support.
