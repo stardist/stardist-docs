@@ -122,9 +122,9 @@ If images have additional channels or channels in a different order than expecte
 
 If you cannot load your full training data into CPU memory (e.g. when using many large annotated 3D volumes), you can do the following:
 
-* Use [keras Sequences](https://www.tensorflow.org/api_docs/python/tf/keras/utils/Sequence) to lazily load your images and masks
-* Disable sample caching in the config `config = Config3D(..., train_sample_cache = False)`
-* Use `model.train(X,Y,...)` with `X` and `Y` now being keras Sequence objects
+1. Use a Keras [`Sequence`/`PyDataset`](https://www.tensorflow.org/api_docs/python/tf/keras/utils/Sequence) to lazily load your images and masks.
+2. Disable sample caching in the config, e.g. `config = Config3D(..., train_sample_cache = False)`.
+3. Use `model.train(X,Y,...)` with `X` and `Y` now being Keras `Sequence`/`PyDataset` objects.
 
 This should lead to an almost constant memory footprint during training.
 
@@ -148,9 +148,11 @@ The "patch size" is an important parameter for training StarDist, and the size o
 
 The maximal size of objects that can be well segmented depends on the receptive field of the neural network used inside a StarDist model.
 
-For the default StarDist 2D network configuration, this is roughly 90 pixels. If your objects are larger than this and the segmentation results indicate over-segmentation, you can either a) downscale your input images such that the object size becomes smaller, or b) increase the receptive field of a StarDist model by changing the *grid* parameter in the model configuration (e.g. setting `grid=(2,2)` will roughly double the receptive field). Grid values of 4 and even 8 do make sense for images with a large minimum object size, e.g. 5x the size of the grid value.
+For the default StarDist 2D network configuration (U-Net with depth 3), this is roughly 90 pixels. If your objects are larger than this and the segmentation results indicate over-segmentation, you can either a) downscale your input images such that the object size becomes smaller, or b) increase the receptive field of a StarDist model by changing the *grid* parameter in the model configuration (e.g. setting `grid=(2,2)` will roughly double the receptive field). Grid values of 4 and even 8 do make sense for images with a large minimum object size, e.g. 5x the size of the grid value.
 
-This is similar for StarDist 3D, although the receptive field for the default network configuration is only roughly 35 pixels. Besides downscaling your input images, you can also change the grid parameter as mentioned above, but do not increase it for Z if you have strongly anisotropic images with relatively few axial planes, e.g. use `grid=(1,2,2)`. Furthermore, you can also slightly increase the receptive field by changing the *backbone* in the configuration to a U-Net, i.e. by using `backbone='unet'`.
+This is similar for StarDist 3D, although the receptive field for the default network configuration (U-Net with depth 2) is only roughly 45 pixels. Besides downscaling your input images, you can also change the grid parameter as mentioned above, but do not increase it for Z if you have strongly anisotropic images with relatively few axial planes, e.g. use `grid=(1,2,2)`.
+
+Of course, in both cases you can also increase the depth of the U-Net network (via parameter `unet_n_depth`), but keep in mind that this can lead to more *overfitting* (i.e. the learned model might not generalize well to new images), especially when training with small datasets.
 
 
 #### Do I have to annotate all nuclei (objects) in a training image? What about those that are only partially visible? What about other objects not of interest?
