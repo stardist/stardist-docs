@@ -185,7 +185,7 @@ Furthermore, one can/should always use *data augmentation* to artificially infla
 
 #### In which format do I need to save my image annotations?
 
-The image annotations (also known as *label images* or *label masks*) should be integer-valued (e.g. 8-bit, 16-bit, 32-bit) TIFF files where all background pixels have value 0 and each object instance is represented by an area/volume filled with a unique integer value. It does not matter what the values are and they do not need to be consecutive. Please note that a foreground/background segmentation mask, where all object instances are denoted by the same value, is not sufficient for StarDist training.
+The image annotations (also known as *label images* or *label masks*) should be integer-valued (e.g. 8-bit, 16-bit, 32-bit) TIFF files where all background pixels have value 0 and each object instance is represented by an area/volume filled with a unique positive integer value. It does not matter what the values are and they do not need to be consecutive. Please note that a foreground/background segmentation mask, where all object instances are denoted by the same value, is not sufficient for StarDist training.
 
 Note that for visualization purposes, label images are often displayed with each object instance in a different color (to tell them apart) on a black background; this is the result of applying a look-up table (e.g. *Glasbey on dark* in Fiji). As mentioned above, the label masks for StarDist must be integer-valued TIFF files and not RGB files, i.e. the specific color does not matter.
 
@@ -214,6 +214,7 @@ First, you can take a look at the existing pretrained models and inspect the ima
 
 If you found a promising pretrained model for your data, it is probably easiest to quickly try it out with our [napari plugin](https://github.com/stardist/stardist-napari) or [Fiji plugin](https://imagej.net/plugins/stardist) and manually inspect if the results are plausible. If that's the case, you may also want to [quantitatively evaluate the results](#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model).
 
+Furthermore, you might find additional models in the [BioImage Model Zoo (bioimage.io)](https://bioimage.io/#/?tags=stardist&type=model). See this [example notebook](https://github.com/stardist/stardist/blob/main/examples/other2D/bioimageio.ipynb) on how to import (and export) a bioimage.io model.
 
 #### Do I need to rescale my images? How do I know which pixel resolution is required?
 
