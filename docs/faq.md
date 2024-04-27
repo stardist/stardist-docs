@@ -59,14 +59,14 @@
 
 #### How do I know if my objects of interest are (sufficiently) star-convex, i.e. is StarDist a good choice for my data?
 
-In a nutshell, most blob-like object shapes are star-convex (see [Wikipedia article](https://en.wikipedia.org/wiki/Star-shaped_polygon)). If you have labeled images, you can load your data in our [example notebooks](https://github.com/stardist/stardist/tree/master/examples) and see how well it can be reconstructed with a star-convex polygon/polyhedron representation. An average reconstruction IoU score (mean intersection of union score) of 0.8 or higher could be generally considered good enough.
+In a nutshell, most blob-like object shapes are star-convex (see [Wikipedia article](https://en.wikipedia.org/wiki/Star-shaped_polygon)). If you have labeled images, you can load your data in our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) and see how well it can be reconstructed with a star-convex polygon/polyhedron representation. An average reconstruction IoU score (mean intersection of union score) of 0.8 or higher could be generally considered good enough.
 
 
 #### Other stains/markers with different appearance, quality, or inhomogeneity?
 
 Please first [verify that the shapes of your objects are star-convex](#how-do-i-know-if-my-objects-of-interest-are-sufficiently-star-convex-i-e-is-stardist-a-good-choice-for-my-data), i.e. blob-like. Examples of objects (segmentable by StarDist) include cells in brightfield images and stained structures in fluorescence or histology images. Where stains are used, an object can have its whole area stained, just its boundary stained, or be negatively stained (i.e. it is dark compared to other regions of the image). Next, please [check if one of the pretrained models works for your data](#how-do-i-know-if-a-pretrained-or-any-model-is-suitable-good-enough-for-my-data).
 
-If your data is suitable for StarDist, but there is no pretrained model available, you need to train your own model. To that end, you need [labeled images](#labeling-annotation) before you can train your model (you can use the provided [example notebooks](https://github.com/stardist/stardist/tree/master/examples) where you replace the example data with your own).
+If your data is suitable for StarDist, but there is no pretrained model available, you need to train your own model. To that end, you need [labeled images](#labeling-annotation) before you can train your model (you can use the provided [example notebooks](https://github.com/stardist/stardist/tree/main/examples) where you replace the example data with your own).
 
 
 #### Can other objects besides round nuclei be segmented (e.g. multi-lobe nuclei, granules, bacteria)?
@@ -104,7 +104,7 @@ If you need 3D segmentations, StarDist 3D does support anisotropic data (e.g. a 
 
 #### Is a specific image format, size, or normalization required?
 
-StarDist is in general not limited to images of specific formats, bit-depths, or sizes. Any input image however needs to be normalized to floating point values roughly in the range 0..1 before network prediction. Our [example notebooks](https://github.com/stardist/stardist/tree/master/examples) demonstrate how this normalization is done in Python, and our [Fiji plugin](https://imagej.net/StarDist) does this by default.
+StarDist is in general not limited to images of specific formats, bit-depths, or sizes. Any input image however needs to be normalized to floating point values roughly in the range 0..1 before network prediction. Our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) demonstrate how this normalization is done in Python, and our [Fiji plugin](https://imagej.net/StarDist) does this by default.
 
 StarDist can be trained and predict on images with arbitrary spatial dimensions, but once a model is trained it is limited to its specific number of [input channels](#are-multi-channel-images-supported) (e.g. one cannot use a model trained for 2D RGB images on 2D single channel images).
 
@@ -174,7 +174,7 @@ This is very difficult to answer in general, since it really depends on your spe
 
 We have often seen good results from as few as 5-10 image crops each having 10-20 annotated objects (in 2D), but your mileage may vary substantially. You can always start with a small training dataset, inspect/curate the results and iterate. 
 
-Furthermore, one can/should always use *data augmentation* to artificially inflate the training data by adding training images with *plausible* appearance variations. What plausible means depends on the data at hand, but some operations (random flips and rotations, intensity shifts) can be used in most cases and are demonstrated e.g. in the training [example notebook](https://github.com/stardist/stardist/tree/master/examples). 
+Furthermore, one can/should always use *data augmentation* to artificially inflate the training data by adding training images with *plausible* appearance variations. What plausible means depends on the data at hand, but some operations (random flips and rotations, intensity shifts) can be used in most cases and are demonstrated e.g. in the training [example notebook](https://github.com/stardist/stardist/tree/main/examples). 
 
 
 ### Software/format for labeling
@@ -206,7 +206,7 @@ Here is some advice for exporting annotations to a label image from different to
 
 #### How do I know if a pretrained (or any) model is suitable/good enough for my data?
 
-First, you can take a look at the existing pretrained models and inspect the images they were trained on, to get an idea if one of them might be suitable for your data. At the moment, you can find an overview of pretrained models [here](https://github.com/stardist/stardist#pretrained-models-for-2d) and [here](https://imagej.net/StarDist#Plugin), including links to the training datasets. Furthermore, our [example notebooks](https://github.com/stardist/stardist/tree/master/examples) also demonstrate how to show a list of the available pretrained models.
+First, you can take a look at the existing pretrained models and inspect the images they were trained on, to get an idea if one of them might be suitable for your data. At the moment, you can find an overview of pretrained models [here](https://github.com/stardist/stardist#pretrained-models-for-2d) and [here](https://imagej.net/StarDist#Plugin), including links to the training datasets. Furthermore, our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) also demonstrate how to show a list of the available pretrained models.
 
 If you found a promising pretrained model for your data, it is probably easiest to quickly try it out with our [Fiji plugin](https://imagej.net/StarDist) and manually inspect if the results are plausible. If that's the case, you may also want to [quantitatively evaluate the results](#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model).
 
@@ -257,7 +257,7 @@ Regarding the choice of GPU, it (currently) has to be a [CUDA](https://en.wikipe
 
 StarDist internally uses a neural network to predict two separate quantities per pixel, 1) an object probability and 2) several distances to the object boundary that the pixel belongs to. Only pixels with an object probability above a chosen *probability threshold* are allowed to "vote" for an object candidate (i.e. a star-convex polygon defined via the predicted distances). Note that many pixels will vote for similar object candidates, since they belong to the same object. Hence, after all object candidates have been collected, a non-maximum suppression (NMS) step is used to prune all the redundant objects, such that (ideally) only one object is retained for every true object in the image. To that end, we need to define which object candidates likely represent the same object in the image. We use a typical approach by defining object similarity in terms of overlap, i.e. two objects are considered equal if their (normalized) intersection area/volume exceeds an *overlap/NMS threshold*.
 
-At the end of our [training notebooks](https://github.com/stardist/stardist/tree/master/examples), we automatically optimize both thresholds based on your validation data, such that they should yield good results in many cases. However, both thresholds can be adjusted to your specific application. Higher values of the probability threshold can yield fewer segmented objects, but will likely avoid false positives. Higher values of the overlap threshold will allow segmented objects to overlap more. If your objects should never overlap, you may set the overlap threshold close to 0. 
+At the end of our [training notebooks](https://github.com/stardist/stardist/tree/main/examples), we automatically optimize both thresholds based on your validation data, such that they should yield good results in many cases. However, both thresholds can be adjusted to your specific application. Higher values of the probability threshold can yield fewer segmented objects, but will likely avoid false positives. Higher values of the overlap threshold will allow segmented objects to overlap more. If your objects should never overlap, you may set the overlap threshold close to 0. 
 
 
 #### How does it work under the hood? I want to know technical details.
@@ -294,7 +294,7 @@ It is possible, but not supported in our software at the moment. We are looking 
 
 #### How do I evaluate the quality of the predicted results of a model?
 
-Ultimately, this depends on your application, i.e. what you want to do with the segmentation results (e.g. counting, intensity measurements, tracking). Hence, we consider a typical evaluation approach here, which we also carry out at the end of our [training notebooks](https://github.com/stardist/stardist/tree/master/examples).
+Ultimately, this depends on your application, i.e. what you want to do with the segmentation results (e.g. counting, intensity measurements, tracking). Hence, we consider a typical evaluation approach here, which we also carry out at the end of our [training notebooks](https://github.com/stardist/stardist/tree/main/examples).
 
 The detection/segmentation performance can be quantitatively evaluated by considering objects in the ground truth to be correctly matched if there are predicted objects with overlap ([intersection over union (IoU)](https://en.wikipedia.org/wiki/Jaccard_index)) beyond a chosen IoU threshold (value between 0 and 1).
 The obtained matching statistics (accuracy, recall, precision, etc.) can be quite informative for the model's performance (see [sensitivity and specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity) for further details).
@@ -305,14 +305,14 @@ The IoU threshold can be between 0 (even slightly overlapping objects count as c
 
 The output of StarDist is a label image and/or a list of (polygon/polyhedron) ROIs, one for each object. These can be used for quantification, for example:
 
-* Python: Based on the label image, the function [regionprops](https://scikit-image.org/docs/0.17.x/api/skimage.measure.html#skimage.measure.regionprops) (or [regionprops_table](https://scikit-image.org/docs/0.17.x/api/skimage.measure.html#skimage.measure.regionprops_table)) from [scikit-image](https://scikit-image.org) offers many different measurements for each object instance. Note that you can also [export 2D predictions as ImageJ ROIs](https://github.com/stardist/stardist/blob/master/examples/other2D/export_imagej_rois.ipynb).
+* Python: Based on the label image, the function [regionprops](https://scikit-image.org/docs/0.17.x/api/skimage.measure.html#skimage.measure.regionprops) (or [regionprops_table](https://scikit-image.org/docs/0.17.x/api/skimage.measure.html#skimage.measure.regionprops_table)) from [scikit-image](https://scikit-image.org) offers many different measurements for each object instance. Note that you can also [export 2D predictions as ImageJ ROIs](https://github.com/stardist/stardist/blob/main/examples/other2D/export_imagej_rois.ipynb).
 
 * Fiji/ImageJ: The *ROI Manager* can be used to measure many different properties (which can be chosen via *Analyze > Set Measurements...*)
 
 
 #### How can I import the predicted results into software X?
 
-As [mentioned above](#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x), StarDist can output its predictions as label images, or lists of polygon/polyhedron coordinates. Label images are quite universal and can be imported in many different software packages. In Python, the 2D polygon coordinates can also be [exported as ImageJ ROIs](https://github.com/stardist/stardist/blob/master/examples/other2D/export_imagej_rois.ipynb), or be serialized to different formats via [Shapely](https://github.com/Toblerity/Shapely).
+As [mentioned above](#how-can-i-perform-measurements-of-the-predicted-objects-in-software-x), StarDist can output its predictions as label images, or lists of polygon/polyhedron coordinates. Label images are quite universal and can be imported in many different software packages. In Python, the 2D polygon coordinates can also be [exported as ImageJ ROIs](https://github.com/stardist/stardist/blob/main/examples/other2D/export_imagej_rois.ipynb), or be serialized to different formats via [Shapely](https://github.com/Toblerity/Shapely).
 
 
 ## Fiji/ImageJ
