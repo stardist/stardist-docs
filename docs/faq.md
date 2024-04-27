@@ -76,10 +76,11 @@ The short answer is that StarDist should work well for segmenting all kinds of b
 
 #### With multiple nucleus types, is it possible to only segment some or classify in addition to segmentation?
 
-If there are multiple object/cell types in your image and you only want to segment some of them, you have several options. First, you can annotate only the object type(s) of interest in your training data, implicitly telling StarDist to consider everything else as background. While this can work, it might make it more difficult for StarDist to reliably distinguish between objects and background, especially if the visual differences between object types are subtle. Alternatively, you can annotate all objects in the training data, such that StarDist will learn to segment objects of all types. In a second step, you would have to filter out all objects of those types you are not interested in. This can either be done manually or with a different classification model.
+If there are multiple object/cell types in your image and you only want to segment some of them, you have two options:
 
-Ideally, StarDist could additionally classify all objects while segmenting them. Although this is currently not possible, we might add this feature in a future version.
+1. Annotate only the object type(s) of interest in your training data, implicitly telling StarDist to consider everything else as background. While this can work, it might make it more difficult for StarDist to reliably distinguish between objects and background, especially if the visual differences between object types are subtle.
 
+2. Annotate all objects in the training data and additionally provide a class label for each annotated object. This will allow you to train a StarDist model that can additionally classify all objects while segmenting them. This feature is supported for 2D and 3D images since [StarDist version 0.7.0](https://github.com/stardist/stardist/releases/tag/0.7.0). Please see [this example notebook](https://nbviewer.jupyter.org/github/stardist/stardist/blob/main/examples/other2D/multiclass.ipynb) (using 2D images) for more details.
 
 #### Use for cell counting or centroid localization?
 
