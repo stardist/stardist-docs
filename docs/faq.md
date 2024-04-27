@@ -105,7 +105,7 @@ If you need 3D segmentations, StarDist 3D does support anisotropic data (e.g. a 
 
 #### Is a specific image format, size, or normalization required?
 
-StarDist is in general not limited to images of specific formats, bit-depths, or sizes. Any input image however needs to be normalized to floating point values roughly in the range 0..1 before network prediction. Our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) demonstrate how this normalization is done in Python, and our plugins ([Fiji](https://imagej.net/StarDist), [napari](https://github.com/stardist/stardist-napari)) do this by default.
+StarDist is in general not limited to images of specific formats, bit-depths, or sizes. Any input image however needs to be normalized to floating point values roughly in the range 0..1 before network prediction. Our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) demonstrate how this normalization is done in Python, and our plugins ([Fiji](https://imagej.net/plugins/stardist), [napari](https://github.com/stardist/stardist-napari)) do this by default.
 
 StarDist can be trained and predict on images with arbitrary spatial dimensions, but once a model is trained it is limited to its specific number of [input channels](#are-multi-channel-images-supported) (e.g. one cannot use a model trained for 2D RGB images on 2D single channel images).
 
@@ -192,9 +192,9 @@ Note that for visualization purposes, label images are often displayed with each
 
 #### Which software do you recommend to annotate 2D and 3D images?
 
-In 2D, there are several options, among them being [Fiji](http://fiji.sc/), [QuPath](https://qupath.github.io), or [Labkit](https://imagej.net/Labkit). Although each of these provide decent annotation tools, we currently recommend using Labkit for its easy label export. Please read [here](https://github.com/stardist/stardist#annotating-images) for more detailed instructions how to use Labkit to generate annotations.  
+In 2D, there are several options, among them being [Fiji](http://fiji.sc/), [QuPath](https://qupath.github.io), [napari](https://napari.org), or [Labkit](https://imagej.net/plugins/labkit/). Although each of these provide decent annotation tools, we currently recommend using Labkit for its easy label export. Please read [here](https://github.com/stardist/stardist#annotating-images) for more detailed instructions how to use Labkit to generate annotations.  
 
-In 3D, there are fewer options: [Labkit](https://github.com/maarzt/imglib2-labkit) and [Paintera](https://github.com/saalfeldlab/paintera) (the latter being very sophisticated but having a steeper learning curve).
+In 3D, there are fewer options: [Labkit](https://github.com/juglab/labkit-ui) and [Paintera](https://github.com/saalfeldlab/paintera) (the latter being very sophisticated but having a steeper learning curve).
 
 
 #### I've annotated my images in software X, how do I export the annotations as label images?
@@ -210,9 +210,9 @@ Here is some advice for exporting annotations to a label image from different to
 
 #### How do I know if a pretrained (or any) model is suitable/good enough for my data?
 
-First, you can take a look at the existing pretrained models and inspect the images they were trained on, to get an idea if one of them might be suitable for your data. At the moment, you can find an overview of pretrained models [here](https://github.com/stardist/stardist#pretrained-models-for-2d) and [here](https://imagej.net/StarDist#Plugin), including links to the training datasets. Furthermore, our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) also demonstrate how to show a list of the available pretrained models.
+First, you can take a look at the existing pretrained models and inspect the images they were trained on, to get an idea if one of them might be suitable for your data. At the moment, you can find an overview of pretrained models [here](https://github.com/stardist/stardist#pretrained-models-for-2d) and [here](https://imagej.net/plugins/stardist#Plugin), including links to the training datasets. Furthermore, our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) also demonstrate how to show a list of the available pretrained models.
 
-If you found a promising pretrained model for your data, it is probably easiest to quickly try it out with our [Fiji plugin](https://imagej.net/StarDist) and manually inspect if the results are plausible. If that's the case, you may also want to [quantitatively evaluate the results](#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model).
+If you found a promising pretrained model for your data, it is probably easiest to quickly try it out with our [napari plugin](https://github.com/stardist/stardist-napari) or [Fiji plugin](https://imagej.net/plugins/stardist) and manually inspect if the results are plausible. If that's the case, you may also want to [quantitatively evaluate the results](#how-do-i-evaluate-the-quality-of-the-predicted-results-of-a-model).
 
 
 #### Do I need to rescale my images? How do I know which pixel resolution is required?
@@ -323,7 +323,7 @@ As [mentioned above](#how-can-i-perform-measurements-of-the-predicted-objects-in
 
 #### After training in Python, how do I export a model to be used in Fiji? Do I have to be careful with the version of TensorFlow?
 
-After training your StarDist model in Python, you can export it to be used in [Fiji](https://imagej.net/StarDist) (or [QuPath](https://qupath.readthedocs.io/en/latest/docs/advanced/stardist.html)) by calling `model.export_TF()`. This will create a ZIP file that contains the trained model in the correct format.
+After training your StarDist model in Python, you can export it to be used in [Fiji](https://imagej.net/plugins/stardist) (or [QuPath](https://qupath.readthedocs.io/en/latest/docs/advanced/stardist.html)) by calling `model.export_TF()`. This will create a ZIP file that contains the trained model in the correct format.
 
 It is important that the version of TensorFlow (a neural network library that StarDist depends on) used in Fiji (or QuPath) is the same or newer as in Python. You can find out which version is used in Python via `import tensorflow; print(tensorflow.__version__)`. In Fiji, you can manage your version of TensorFlow via *Edit > Options > TensorFlow...*. Note that this also applies to our pretrained models, which currently require TensorFlow 1.12.0 or newer.
 
@@ -333,14 +333,14 @@ Starting with version 0.6.0, StarDist for Python does work with either TensorFlo
 
 #### Can it be used in DeepImageJ?
 
-We recommend using [our plugin](https://imagej.net/StarDist) when using StarDist in Fiji, because it bundles all the necessary steps.
+We recommend using [our plugin](https://imagej.net/plugins/stardist) when using StarDist in Fiji, because it bundles all the necessary steps.
 
 However, if you are an advanced user and want to use [DeepImageJ](https://deepimagej.github.io/deepimagej/), you should be able to do so with a [pretrained](#using-pretrained-models) or [exported model](#after-training-in-python-how-do-i-export-a-model-to-be-used-in-fiji-do-i-have-to-be-careful-with-the-version-of-tensorflow). However, this will only perform the neural network prediction and not the necessary [non-maximum suppression (NMS)](#what-are-the-probability-and-overlap-nms-thresholds-how-do-i-select-good-values) step. You can call just the NMS step from our plugin (*Plugins > StarDist > Other > StarDist 2D NMS (postprocessing only)*) though. Note that we haven't tested this workflow, but it should work in principle.
 
 
 #### The Fiji plugin currently only supports 2D images. Is 3D support planned?
 
-Yes, we also want to support 3D in our [Fiji plugin](https://imagej.net/StarDist). However, there are some issues that we need to solve first, especially related to deployment (reliance on C++ code that isn't easily portable to Java).
+Yes, we also want to support 3D in our [Fiji plugin](https://imagej.net/plugins/stardist). However, there are some issues that we need to solve first, especially related to deployment (reliance on C++ code that isn't easily portable to Java).
 
 
 #### Are there differences between the Python and Fiji versions?
