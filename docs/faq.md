@@ -105,11 +105,11 @@ If you need 3D segmentations, StarDist 3D does support anisotropic data (e.g. a 
 
 #### Is a specific image format, size, or normalization required?
 
-StarDist is in general not limited to images of specific formats, bit-depths, or sizes. Any input image however needs to be normalized to floating point values roughly in the range 0..1 before network prediction. Our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) demonstrate how this normalization is done in Python, and our [Fiji plugin](https://imagej.net/StarDist) does this by default.
+StarDist is in general not limited to images of specific formats, bit-depths, or sizes. Any input image however needs to be normalized to floating point values roughly in the range 0..1 before network prediction. Our [example notebooks](https://github.com/stardist/stardist/tree/main/examples) demonstrate how this normalization is done in Python, and our plugins ([Fiji](https://imagej.net/StarDist), [napari](https://github.com/stardist/stardist-napari)) do this by default.
 
 StarDist can be trained and predict on images with arbitrary spatial dimensions, but once a model is trained it is limited to its specific number of [input channels](#are-multi-channel-images-supported) (e.g. one cannot use a model trained for 2D RGB images on 2D single channel images).
 
-StarDist does not put any constraints on the specific size of the input image: all padding and cropping necessary for the actual neural network is automatically handled for you. Also note that StarDist can do tiled prediction of large images in case of limited GPU memory.
+StarDist does not put any constraints on the specific size of the input image: all padding and cropping necessary for the actual neural network is automatically handled for you. Also note that StarDist can do tiled prediction of large images in case of limited GPU memory. Furthermore, there is a special prediction mode for huge images that may not even fit into CPU memory (see [example notebook](https://nbviewer.jupyter.org/github/stardist/stardist/blob/main/examples/other2D/predict_big_data.ipynb)).
 
 
 #### Are multi-channel images supported?
