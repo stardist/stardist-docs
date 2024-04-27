@@ -157,10 +157,11 @@ Of course, in both cases you can also increase the depth of the U-Net network (v
 
 #### Do I have to annotate all nuclei (objects) in a training image? What about those that are only partially visible? What about other objects not of interest?
 
-Sparse labelling is not supported at this point, i.e. you must label all the objects in your chosen training images, even if they are only partially visible. If you don't do this, the trained model can be confused as to which pixels belong to objects and which belong to the background. As a consequence, this might result in many objects being missed during prediction.
+Sparse labelling was not supported until recently, i.e. you had to label all the objects in your chosen training images, even if they were only partially visible. If you didn't do this, the trained model could've been confused as to which pixels belong to objects and which belong to the background. As a consequence, this might have resulted in many objects being missed during prediction.
 
-If there are any other objects or structures present in the image, which are not of interest, there are two options. First, annotate them too for training and then filter them out later from the predicted objects. (In the future, we *might* add an option to additionally classify different objects types, making this easier.) I would recommend this in many cases, especially when the objects are also star-convex or look very similar to the objects of interest. Second, leave unwanted objects or structures out of the annotation if they can easily be distinguished from the objects of interest. If in doubt, try both strategies.
+As of [StarDist 0.9.0](https://github.com/stardist/stardist/releases/tag/0.9.0), we do support sparse labelling, i.e. it is no longer necessary to label every pixel in the training images. Concretely, unlabeled pixels must be given a negative integer value (e.g. -1) to indicate that training should ignore these pixels. However, you should use this to either label every pixel of an individual object or none, i.e. a labeled object must not have any "holes" of unlabeled pixels.
 
+Please refer to [this](#with-multiple-nucleus-types-is-it-possible-to-only-segment-some-or-classify-in-addition-to-segmentation) on how to deal with other roundish objects which are also present in the image but are not of interest to you.
 
 #### Is it better to annotate images from scratch or to bootstrap/curate imperfect annotations (e.g. from another method)? Is training sensitive to annotation mistakes?
 
